@@ -24,7 +24,8 @@ const Cart = (props) => {
       onRemove={removeItemHandler.bind(null, item.id)}
     ></CartItem>
   ));
-  const totalAmount = `$${cntx.totalAmount.toFixed(2)}`;
+
+  let totalAmount = `$${cntx.totalAmount.toFixed(2)}`;
 
   //
   return (

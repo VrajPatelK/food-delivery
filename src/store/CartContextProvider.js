@@ -41,8 +41,8 @@ const cartReducer = (prevState, action) => {
     //finally returns.
     return {
       items: updateItems,
-      totalAmount:
-        updateTotalAmount.toFixed(0) === "0" ? 0.0 : updateTotalAmount,
+      totalAmount: updateTotalAmount < 0.0 ? 0.0 : updateTotalAmount,
+      // sp.case : updateTotalAmount = -1.3500311979441904e-13 | updateTotalAmount.toFixed(2) = '-0.00' } | so, we need to check is it neg. or not. and if it is then set 0.0
     };
   }
 
@@ -72,12 +72,11 @@ const cartReducer = (prevState, action) => {
       updateItems[existedIndex] = updateItem;
     }
 
-    // console.log(updateTotalAmount);
+    // console.log(updateTotalAmount, updateTotalAmount.toFixed(2));
     //finally returns.
     return {
       items: updateItems,
-      totalAmount:
-        updateTotalAmount.toFixed(0) === "0.00" ? 0.0 : updateTotalAmount,
+      totalAmount: updateTotalAmount < 0.0 ? 0.0 : updateTotalAmount,
     };
   }
 
