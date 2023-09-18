@@ -36,6 +36,7 @@ const AvailableMeals = () => {
   //
   const [meals, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [err, setErr] = useState(undefined);
 
   //on load fetch (only for the first time)
   useEffect(() => {
@@ -47,6 +48,12 @@ const AvailableMeals = () => {
       const response = await fetch(
         "https://food-delivery-d6f27-default-rtdb.firebaseio.com/meals.json"
       );
+
+      //check err!!🙄
+      if (!response.ok)
+        throw new Error("Server Error : Someting went wrong !!! 🙄🙄");
+
+      //
       const data = await response.json();
 
       let extractMeals = [];
@@ -64,23 +71,36 @@ const AvailableMeals = () => {
       setIsLoading(false);
     };
 
-    fetchMeals();
+    fetchMeals().catch((error) => {
+      setIsLoading(false);
+      setErr(error.message);
+    });
   }, []);
 
+  if (err) {
+    return (
+      <section>
+        <p className={classes["server-err"]}>
+          <i>{err}</i>
+        </p>
+      </section>
+    );
+  }
+
   //content checking
+  if (isLoading)
+    return (
+      <section>
+        <Loader />
+      </section>
+    );
+
   if (meals.length === 0)
     return (
       <section>
         <p className={classes["not-fnd"]}>
           <i>Meals not found</i>
         </p>
-      </section>
-    );
-
-  if (isLoading)
-    return (
-      <section>
-        <Loader />
       </section>
     );
 

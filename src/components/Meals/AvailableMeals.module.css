@@ -22,6 +22,18 @@
     margin-inline: auto;
 }
 
+.server-err {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 1rem;
+    width: 20%;
+    border-radius: .5rem;
+    margin-inline: auto;
+    color: #b40e0e;
+    border: 1px solid #b40e0e;
+    background-color: #fddddd;
+}
+
 @keyframes meals-appear {
     from {
         opacity: 0;
@@ -35,13 +47,17 @@
 }
 
 @media (max-width:992px) {
-    .not-fnd {
+
+    .not-fnd,
+    .server-err {
         width: 40%;
     }
 }
 
 @media (max-width:768px) {
-    .not-fnd {
+
+    .not-fnd,
+    .server-err {
         width: 80%;
     }
 }
