@@ -11,6 +11,17 @@
     padding: 0;
 }
 
+.not-fnd {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #454545;
+    background: #e4e4e4;
+    padding: 1rem;
+    width: 20%;
+    border-radius: .5rem;
+    margin-inline: auto;
+}
+
 @keyframes meals-appear {
     from {
         opacity: 0;
@@ -20,5 +31,17 @@
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@media (max-width:992px) {
+    .not-fnd {
+        width: 40%;
+    }
+}
+
+@media (max-width:768px) {
+    .not-fnd {
+        width: 80%;
     }
 }

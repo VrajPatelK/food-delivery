@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Card from "../UI/Card";
 import MealItem from "./MealItem/MealItem";
+import Loader from "../Loader/Loader";
 
 import classes from "./AvailableMeals.module.css";
 
@@ -34,11 +35,15 @@ import classes from "./AvailableMeals.module.css";
 const AvailableMeals = () => {
   //
   const [meals, setMeals] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   //on load fetch (only for the first time)
   useEffect(() => {
     //fetch API
     const fetchMeals = async () => {
+      //
+      setIsLoading(true);
+
       const response = await fetch(
         "https://food-delivery-d6f27-default-rtdb.firebaseio.com/meals.json"
       );
@@ -56,10 +61,28 @@ const AvailableMeals = () => {
 
       //
       setMeals(extractMeals);
+      setIsLoading(false);
     };
 
     fetchMeals();
-  });
+  }, []);
+
+  //content checking
+  if (meals.length === 0)
+    return (
+      <section>
+        <p className={classes["not-fnd"]}>
+          <i>Meals not found</i>
+        </p>
+      </section>
+    );
+
+  if (isLoading)
+    return (
+      <section>
+        <Loader />
+      </section>
+    );
 
   //
   const mealList = meals.map((meal) => (
