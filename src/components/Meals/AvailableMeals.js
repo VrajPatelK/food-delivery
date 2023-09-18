@@ -91,7 +91,7 @@ const AvailableMeals = () => {
   if (isLoading)
     return (
       <section>
-        <Loader />
+        <Loader msg="Loading..." />
       </section>
     );
 

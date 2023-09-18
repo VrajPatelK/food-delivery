@@ -1,0 +1,44 @@
+/* GreenTick.css */
+.tick-container {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.tick-container svg {
+    background: green;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.tick-path {
+    stroke: #fff;
+    /* Green color */
+    stroke-width: 8;
+    fill: transparent;
+    stroke-dasharray: 0;
+    /* Initially, the line is not visible */
+    stroke-dashoffset: 0;
+    /* Initially, the line is not visible */
+    animation: draw 1s ease-in-out forwards;
+    /* Animation duration and timing function */
+}
+
+@keyframes draw {
+    0% {
+        stroke-dasharray: 0 100;
+        /* No visible line */
+        stroke-dashoffset: -20px;
+        /* Offset to hide the line */
+    }
+
+    100% {
+        stroke-dasharray: 100 100;
+        /* Full line length */
+        stroke-dashoffset: 0;
+        /* No offset, fully visible line */
+    }
+}

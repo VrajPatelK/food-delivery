@@ -2,11 +2,11 @@ import React from "react";
 import "./Loader.css";
 
 // Create a Loader component
-function Loader() {
+function Loader(props) {
   return (
     <div className="loader-container">
       <div className="loader"></div>
-      <p>Loading...</p>
+      <p>{props.msg}</p>
     </div>
   );
 }

@@ -10,9 +10,12 @@
 
 .modal {
     position: fixed;
-    top: 20vh;
+    top: 2%;
     left: 5%;
     width: 90%;
+    min-height: fit-content;
+    max-height: 95vh;
+    overflow: auto;
     background-color: white;
     padding: 1rem;
     border-radius: 14px;
