@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useState } from "react";
 import useInput from "../../hooks/useInput";
 import classes from "./Checkout.module.css";
 
@@ -60,8 +60,8 @@ const Checkout = (props) => {
     event.preventDefault();
 
     //
-    const formValidity =
-      nameIsValid && streetIsValid && cityIsValid && postalCodeIsValid;
+    // const formValidity =
+    //   nameIsValid && streetIsValid && cityIsValid && postalCodeIsValid;
 
     if (!formIsValid) return; // if it is not valid
 

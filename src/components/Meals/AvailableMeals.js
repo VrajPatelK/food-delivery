@@ -46,7 +46,7 @@ const AvailableMeals = () => {
       setIsLoading(true);
 
       const response = await fetch(
-        "https://food-delivery-d6f27-default-rtdb.firebaseio.com/meals.json"
+        `${process.env.REACT_APP_FIREBASE_URL}/meals.json`
       );
 
       //check err!!🙄

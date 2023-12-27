@@ -38,17 +38,14 @@ const Cart = (props) => {
     setIsOrdering(true);
 
     //post the oreder-details
-    await fetch(
-      "https://food-delivery-d6f27-default-rtdb.firebaseio.com/orders.json",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          user: user,
-          items: cntx.items,
-        }),
-        headers: { "Content-Type": "application/json" },
-      }
-    );
+    await fetch(`${process.env.REACT_APP_FIREBASE_URL}/orders.json`, {
+      method: "POST",
+      body: JSON.stringify({
+        user: user,
+        items: cntx.items,
+      }),
+      headers: { "Content-Type": "application/json" },
+    });
     setIsOrdering(false);
     setIsCheckout(true);
     setIsOrderDone(true);
